@@ -62,7 +62,7 @@ const Footer = () => {
         <FooterSection>
           <FooterTitle>Contact</FooterTitle>
           <p>Email: info@constructionco.com</p>
-          <p>Phone: +123 456 7890</p>
+          
         </FooterSection>
         <FooterSection>
           <FooterTitle>Follow Us</FooterTitle>
@@ -73,8 +73,8 @@ const Footer = () => {
         </FooterSection>
        
       </FooterContent>
-      <p >
-            Design and develop by <a href='divpro.netlify.app' style={{color:'white'}} >Divepro</a>
+          <p style={{marginTop:20, paddingTop:40}}>
+            Design and develop by  <FooterLink href="https://divpro.netlify.app/">Divepro</FooterLink>
           </p>
     </FooterContainer>
   );
