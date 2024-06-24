@@ -69,8 +69,13 @@ const Footer = () => {
           <p>
             <FooterLink href="#">Facebook</FooterLink> | <FooterLink href="#">Twitter</FooterLink> | <FooterLink href="#">Instagram</FooterLink>
           </p>
+          
         </FooterSection>
+       
       </FooterContent>
+      <p >
+            Design and develop by <a href='divpro.netlify.app' style={{color:'white'}} >Divepro</a>
+          </p>
     </FooterContainer>
   );
 };
