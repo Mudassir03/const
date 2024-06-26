@@ -1,5 +1,5 @@
 // src/components/ContactFormModal.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -26,15 +26,7 @@ const ModalContent = styled.div`
   position: relative;
 `;
 
-const CloseButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  cursor: pointer;
-`;
+
 
 const ModalTitle = styled.h2`
   margin-bottom: 1rem;
@@ -45,29 +37,27 @@ const ModalSubtitle = styled.p`
 `;
 
 const Form = styled.form`
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
 `;
 
 const Input = styled.input`
-  padding: 0.8rem;
-  font-size: 1rem;
+  padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
 `;
 
 const SubmitButton = styled.button`
-  padding: 1rem 2rem;
-  font-size: 1rem;
+  padding: 1rem;
   background-color: var(--primary-color);
-  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s;
 
   &:hover {
-    background-color: #d9745c;
+    background-color: #d47756;
   }
 `;
 
@@ -82,13 +72,41 @@ const ErrorText = styled.p`
   font-size: 0.9rem;
 `;
 
+const CloseIcon = styled.span`
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+`;
+
 const ContactFormModal = ({ isOpen, onClose }) => {
   const [formValues, setFormValues] = useState({
     fullName: '',
     mobileNo: '',
     plotLocation: '',
+    ipAddress: '',
   });
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (isOpen) {
+      fetchIpAddress();
+    }
+  }, [isOpen]);
+
+  const fetchIpAddress = async () => {
+    try {
+      const response = await axios.get('/api/ip'); // Replace with your actual API endpoint
+      const { ip } = response.data;
+      setFormValues((prevValues) => ({
+        ...prevValues,
+        ipAddress: ip,
+      }));
+    } catch (error) {
+      console.error('Error fetching IP address:', error);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -100,31 +118,34 @@ const ContactFormModal = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { fullName, mobileNo, plotLocation } = formValues;
+    const { fullName, mobileNo, plotLocation, ipAddress } = formValues;
 
-    // Validate mobile number length
     if (mobileNo.length !== 10) {
       setError('Mobile number must be exactly 10 digits.');
       return;
     }
 
-    // Prepare data object for SheetDB API
+    const currentDate = new Date().toLocaleDateString();
+    const currentTime = new Date().toLocaleTimeString();
+
     const formData = {
       data: {
         fullName: fullName,
         mobileNo: mobileNo,
         plotLocation: plotLocation,
+        date: currentDate,
+        time: currentTime,
+        ipAddress: ipAddress,
       },
     };
 
     try {
-      // Send POST request to SheetDB API
       await axios.post('https://sheetdb.io/api/v1/dt2pqqze9w85a', formData);
-      // Reset form values and close modal on successful submission
       setFormValues({
         fullName: '',
         mobileNo: '',
         plotLocation: '',
+        ipAddress: '',
       });
       setError('');
       onClose();
@@ -140,7 +161,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
   return (
     <ModalOverlay>
       <ModalContent>
-        <CloseButton onClick={onClose}>&times;</CloseButton>
+        <CloseIcon onClick={onClose}>&times;</CloseIcon>
         <ModalTitle>Book Free Appointment</ModalTitle>
         <ModalSubtitle>Quality construction at affordable price</ModalSubtitle>
         <Form onSubmit={handleSubmit}>
@@ -153,7 +174,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
             required
           />
           <Input
-            type="tel"
+            type="text"
             name="mobileNo"
             placeholder="Mobile No."
             value={formValues.mobileNo}
