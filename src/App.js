@@ -1,5 +1,5 @@
 // src/App.js
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Project from './pages/Project';
@@ -8,20 +8,36 @@ import About from './pages/About';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import GlobalStyle from './globalStyles';
+import ContactFormModal from './components/ContactFormModal'; // Ensure you import the ContactFormModal component
 
 const App = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal open/close
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <Router>
       <GlobalStyle />
       <div>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* Route for Home */}
+          <Route path="/" element={<Home openModal={openModal} />} />
+          {/* Other routes */}
           <Route path="/project" element={<Project />} />
           <Route path="/estimator" element={<Estimator />} />
           <Route path="/about" element={<About />} />
         </Routes>
         <Footer />
+
+        {/* Render ContactFormModal conditionally based on isModalOpen state */}
+        {isModalOpen && <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />}
       </div>
     </Router>
   );

@@ -45,27 +45,29 @@ const ModalSubtitle = styled.p`
 `;
 
 const Form = styled.form`
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 1rem;
 `;
 
 const Input = styled.input`
-  padding: 0.5rem;
+  padding: 0.8rem;
+  font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
 `;
 
 const SubmitButton = styled.button`
-  padding: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
   background-color: var(--primary-color);
+  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s;
 
   &:hover {
-    background-color: #d47756;
+    background-color: #d9745c;
   }
 `;
 
@@ -100,13 +102,13 @@ const ContactFormModal = ({ isOpen, onClose }) => {
     e.preventDefault();
     const { fullName, mobileNo, plotLocation } = formValues;
 
-    // Check if the mobile number is exactly 10 digits
+    // Validate mobile number length
     if (mobileNo.length !== 10) {
       setError('Mobile number must be exactly 10 digits.');
       return;
     }
 
-    // Prepare the data object to send to SheetDB
+    // Prepare data object for SheetDB API
     const formData = {
       data: {
         fullName: fullName,
@@ -151,7 +153,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
             required
           />
           <Input
-            type="text"
+            type="tel"
             name="mobileNo"
             placeholder="Mobile No."
             value={formValues.mobileNo}
