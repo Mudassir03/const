@@ -39,7 +39,8 @@ const BottomNavbarContainer = styled.nav`
 
   @media (max-width: 768px) {
     display: flex;
-    justify-content: space-around;
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
     background-color: var(--primary-color);
     color: #fff;
     position: fixed;
@@ -71,6 +72,8 @@ const BottomNavLinks = styled.ul`
   list-style: none;
   display: flex;
   gap: 1.5rem;
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
 `;
 
 const NavLink = styled.li`
