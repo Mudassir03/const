@@ -1,3 +1,7 @@
+
+
+
+
 // src/components/ContactFormModal.js
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
@@ -26,7 +30,15 @@ const ModalContent = styled.div`
   position: relative;
 `;
 
-
+const CloseButton = styled.button`
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+`;
 
 const ModalTitle = styled.h2`
   margin-bottom: 1rem;
@@ -80,11 +92,28 @@ const CloseIcon = styled.span`
   font-size: 1.5rem;
 `;
 
+const IPAddress = () => {
+  const [ipAddress, setIPAddress] = useState('');
+
+  useEffect(() => {
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => setIPAddress(data.ip))
+      .catch(error => console.log(error));
+  }, []);
+
+
+};
+
+
+
 const ContactFormModal = ({ isOpen, onClose }) => {
   const [formValues, setFormValues] = useState({
     fullName: '',
     mobileNo: '',
     plotLocation: '',
+    date: '',
+    time: '',
     ipAddress: '',
   });
   const [error, setError] = useState('');
@@ -97,18 +126,18 @@ const ContactFormModal = ({ isOpen, onClose }) => {
 
   const fetchIpAddress = async () => {
     try {
-      const response = await axios.get('/api/ip'); // Replace with your actual API endpoint
-      const { ip } = response.data;
-      setFormValues((prevValues) => ({
+      const response = await fetch('https://api.ipify.org?format=json');
+      const data = await response.json();
+      setFormValues(prevValues => ({
         ...prevValues,
-        ipAddress: ip,
+        ipAddress: data.ip,
       }));
     } catch (error) {
       console.error('Error fetching IP address:', error);
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
     setFormValues({
       ...formValues,
@@ -116,18 +145,16 @@ const ContactFormModal = ({ isOpen, onClose }) => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    const { fullName, mobileNo, plotLocation, ipAddress } = formValues;
+    const { fullName, mobileNo, plotLocation, date, time, ipAddress } = formValues;
 
     if (mobileNo.length !== 10) {
       setError('Mobile number must be exactly 10 digits.');
       return;
     }
-
     const currentDate = new Date().toLocaleDateString();
     const currentTime = new Date().toLocaleTimeString();
-
     const formData = {
       data: {
         fullName: fullName,
@@ -145,6 +172,8 @@ const ContactFormModal = ({ isOpen, onClose }) => {
         fullName: '',
         mobileNo: '',
         plotLocation: '',
+        date: '',
+        time: '',
         ipAddress: '',
       });
       setError('');
@@ -189,6 +218,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
             onChange={handleChange}
             required
           />
+          <IPAddress />
           {error && <ErrorText>{error}</ErrorText>}
           <SubmitButton type="submit">Submit</SubmitButton>
         </Form>
