@@ -137,12 +137,14 @@ const ContactFormModal = ({ isOpen, onClose }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const { fullName, mobileNo, plotLocation, date, time, ipAddress } = formValues;
+    const { fullName, mobileNo, plotLocation,  ipAddress } = formValues;
 
     if (mobileNo.length !== 10) {
       setError('Mobile number must be exactly 10 digits.');
       return;
     }
+    const date= new Date().toLocaleDateString();
+    const time= new Date().toLocaleTimeString();
 
     const formData = {
       data: {
