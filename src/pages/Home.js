@@ -100,7 +100,7 @@ const Home = ({ openModal }) => {
     <>
       <HeroSection>
         <Title>Welcome to Ek Saath co.</Title>
-        <Subtitle>We build dreams into reality.</Subtitle>
+        <Subtitle>lets build dream <span style={{color:"#E88D67"}}>Ek Saath</span>.</Subtitle>
         <Button onClick={openModal}>Contact Us</Button>
       </HeroSection>
 
