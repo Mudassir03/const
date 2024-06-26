@@ -91,7 +91,9 @@ const IPAddress = () => {
   }, []);
 
   return (
-    ipAddress
+    <div style={{display:'none'}}>
+      <h1>Your IP Address is: {ipAddress}</h1>
+    </div>
   );
 };
 
