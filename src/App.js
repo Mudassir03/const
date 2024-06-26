@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Navbar openModal={openModal} />
+      <Navbar />
       <Home openModal={openModal} />
       <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
       <Footer />

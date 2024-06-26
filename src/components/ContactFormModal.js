@@ -58,14 +58,14 @@ const Input = styled.input`
 
 const SubmitButton = styled.button`
   padding: 1rem;
-  background-color: #f7c08a;
+  background-color: var(--primary-color);
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s;
 
   &:hover {
-    background-color: #f57c00;
+    background-color: #d47756;
   }
 `;
 
@@ -151,14 +151,12 @@ const ContactFormModal = ({ isOpen, onClose }) => {
             required
           />
           <Input
-            type="tel"
+            type="text"
             name="mobileNo"
             placeholder="Mobile No."
             value={formValues.mobileNo}
             onChange={handleChange}
             required
-            pattern="\d{10}"
-            title="Mobile number must be exactly 10 digits."
           />
           <Input
             type="text"

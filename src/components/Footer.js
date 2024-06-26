@@ -3,79 +3,34 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FooterContainer = styled.footer`
-  background-color: #333;
+  background-color: var(--primary-color);
   color: #fff;
-  padding: 2rem 0;
+  padding: 1rem;
   text-align: center;
-
-  @media (max-width: 768px) {
-    padding: 1rem 0;
-  }
 `;
 
-const FooterContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-around;
-  }
-`;
-
-const FooterSection = styled.div`
-  margin: 1rem 0;
-
-  @media (min-width: 768px) {
-    margin: 0 1rem;
-  }
-`;
-
-const FooterTitle = styled.h3`
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
-  }
+const FooterText = styled.p`
+  margin: 0;
 `;
 
 const FooterLink = styled.a`
-  color: #f7c08a;
+  color: #fff;
   text-decoration: none;
-  transition: color 0.3s;
 
   &:hover {
-    color: #f57c00;
+    text-decoration: underline;
   }
 `;
 
 const Footer = () => {
   return (
     <FooterContainer>
-      <FooterContent>
-        <FooterSection>
-          <FooterTitle>About Us</FooterTitle>
-          <p>We are a leading construction company providing top-notch services.</p>
-        </FooterSection>
-        <FooterSection>
-          <FooterTitle>Contact</FooterTitle>
-          <p>Email: info@constructionco.com</p>
-          
-        </FooterSection>
-        <FooterSection>
-          <FooterTitle>Follow Us</FooterTitle>
-          <p>
-            <FooterLink href="#">Facebook</FooterLink> | <FooterLink href="#">Twitter</FooterLink> | <FooterLink href="#">Instagram</FooterLink>
-          </p>
-          
-        </FooterSection>
-       
-      </FooterContent>
-          <p style={{marginTop:20, paddingTop:40}}>
-            Design and develop by  <FooterLink href="https://divpro.netlify.app/">Divepro</FooterLink>
-          </p>
+      <FooterText>
+        Design and develop by{' '}
+        <FooterLink href='https://divpro.netlify.app' target='_blank' rel='noopener noreferrer'>
+          Divepro
+        </FooterLink>
+      </FooterText>
     </FooterContainer>
   );
 };
