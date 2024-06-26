@@ -1,7 +1,7 @@
 // src/components/Navbar.js
 import React from 'react';
 import styled from 'styled-components';
-import { FaHome, FaProjectDiagram, FaCalculator, FaInfoCircle } from 'react-icons/fa';
+import { FaHome, FaBuilding, FaCalculator, FaInfoCircle } from 'react-icons/fa';
 
 const NavbarContainer = styled.nav`
   display: flex;
@@ -97,20 +97,20 @@ const Navbar = () => {
         <Logo>Ek Saath co.</Logo>
         <NavLinks>
           <NavLink>
-            <FaHome size={24} />
+            <FaHome size={22} />
             <span>Home</span>
           </NavLink>
           <NavLink>
-            <FaProjectDiagram size={24} />
-            <span>Our Project</span>
+            <FaBuilding size={22} /> {/* Use FaBuilding for building icon */}
+            <span>Project</span>
           </NavLink>
           <NavLink>
-            <FaCalculator size={24} />
-            <span>Cost Estimator</span>
+            <FaCalculator size={22} />
+            <span>Estimator</span>
           </NavLink>
           <NavLink>
-            <FaInfoCircle size={24} />
-            <span>About Us</span>
+            <FaInfoCircle size={22} />
+            <span>About</span>
           </NavLink>
         </NavLinks>
       </NavbarContainer>
@@ -122,20 +122,20 @@ const Navbar = () => {
       <BottomNavbarContainer>
         <BottomNavLinks>
           <NavLink>
-            <FaHome size={24} />
+            <FaHome size={22} />
             <span>Home</span>
           </NavLink>
           <NavLink>
-            <FaProjectDiagram size={24} />
-            <span>Our Project</span>
+            <FaBuilding size={22} /> {/* Use FaBuilding for building icon */}
+            <span>Project</span>
           </NavLink>
           <NavLink>
-            <FaCalculator size={24} />
-            <span>Cost Estimator</span>
+            <FaCalculator size={22} />
+            <span>Estimator</span>
           </NavLink>
           <NavLink>
-            <FaInfoCircle size={24} />
-            <span>About Us</span>
+            <FaInfoCircle size={22} />
+            <span>About</span>
           </NavLink>
         </BottomNavLinks>
       </BottomNavbarContainer>
