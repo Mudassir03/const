@@ -1,7 +1,3 @@
-
-
-
-
 // src/components/ContactFormModal.js
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
@@ -30,15 +26,7 @@ const ModalContent = styled.div`
   position: relative;
 `;
 
-const CloseButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  cursor: pointer;
-`;
+
 
 const ModalTitle = styled.h2`
   margin-bottom: 1rem;
@@ -102,10 +90,10 @@ const IPAddress = () => {
       .catch(error => console.log(error));
   }, []);
 
-
+  return (
+    ipAddress
+  );
 };
-
-
 
 const ContactFormModal = ({ isOpen, onClose }) => {
   const [formValues, setFormValues] = useState({
@@ -153,15 +141,14 @@ const ContactFormModal = ({ isOpen, onClose }) => {
       setError('Mobile number must be exactly 10 digits.');
       return;
     }
-    const currentDate = new Date().toLocaleDateString();
-    const currentTime = new Date().toLocaleTimeString();
+
     const formData = {
       data: {
         fullName: fullName,
         mobileNo: mobileNo,
         plotLocation: plotLocation,
-        date: currentDate,
-        time: currentTime,
+        date: date,
+        time: time,
         ipAddress: ipAddress,
       },
     };
