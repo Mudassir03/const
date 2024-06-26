@@ -2,9 +2,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 const HeroSection = styled.section`
-  background-color: rgba(245, 245, 245, 0.8);
+  background-color: var(--secondary-color);
   padding: 4rem 0;
   text-align: center;
 `;
@@ -32,15 +31,15 @@ const Subtitle = styled.p`
 const Button = styled.button`
   padding: 1rem 2rem;
   font-size: 1.2rem;
-  background-color: #f7c08a;
-  color: #333;
+  background-color: var(--primary-color);
+  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s;
 
   &:hover {
-    background-color: #f57c00;
+    background-color: #d9745c;
   }
 
   @media (max-width: 768px) {
@@ -49,7 +48,7 @@ const Button = styled.button`
 `;
 
 const ServicesSection = styled.section`
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #fff;
   padding: 4rem 0;
   text-align: center;
 `;
@@ -100,7 +99,7 @@ const Home = ({ openModal }) => {
   return (
     <>
       <HeroSection>
-        <Title>Welcome to Construction Co.</Title>
+        <Title>Welcome to Ek Saath co.</Title>
         <Subtitle>We build dreams into reality.</Subtitle>
         <Button onClick={openModal}>Contact Us</Button>
       </HeroSection>

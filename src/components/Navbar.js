@@ -1,6 +1,7 @@
 // src/components/Navbar.js
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { FaHome, FaBuilding, FaCalculator, FaInfoCircle } from 'react-icons/fa';
 
 const NavbarContainer = styled.nav`
@@ -39,8 +40,8 @@ const BottomNavbarContainer = styled.nav`
 
   @media (max-width: 768px) {
     display: flex;
-    justify-content: center; /* Center items horizontally */
-    align-items: center; /* Center items vertically */
+    justify-content: space-around;
+    align-items: center;
     background-color: var(--primary-color);
     color: #fff;
     position: fixed;
@@ -83,13 +84,14 @@ const NavLink = styled.li`
   cursor: pointer;
   color: #fff;
   padding: 0.5rem; /* Add padding around each NavLink */
+  text-align: center;
 
   &:hover {
     text-decoration: underline;
   }
 
   svg {
-    margin-bottom: 0.5rem; /* Adjust spacing between icon and text */
+    margin-bottom: 0.3rem; /* Adjust spacing between icon and text */
   }
 `;
 
@@ -100,20 +102,24 @@ const Navbar = () => {
         <Logo>Ek Saath co.</Logo>
         <NavLinks>
           <NavLink>
-            <FaHome size={22} />
-            <span>Home</span>
+            <Link to="/">
+              <span>Home</span>
+            </Link>
           </NavLink>
           <NavLink>
-            <FaBuilding size={22} /> {/* Use FaBuilding for building icon */}
-            <span>Project</span>
+            <Link to="/project">
+              <span>Project</span>
+            </Link>
           </NavLink>
           <NavLink>
-            <FaCalculator size={22} />
-            <span>Estimator</span>
+            <Link to="/estimator">
+              <span>Estimator</span>
+            </Link>
           </NavLink>
           <NavLink>
-            <FaInfoCircle size={22} />
-            <span>About</span>
+            <Link to="/about">
+              <span>About</span>
+            </Link>
           </NavLink>
         </NavLinks>
       </NavbarContainer>
@@ -125,20 +131,28 @@ const Navbar = () => {
       <BottomNavbarContainer>
         <BottomNavLinks>
           <NavLink>
-            <FaHome size={22} />
-            <span>Home</span>
+            <Link to="/">
+              <FaHome size={22} />
+              <span>Home</span>
+            </Link>
           </NavLink>
           <NavLink>
-            <FaBuilding size={22} /> {/* Use FaBuilding for building icon */}
-            <span>Project</span>
+            <Link to="/project">
+              <FaBuilding size={22} />
+              <span>Project</span>
+            </Link>
           </NavLink>
           <NavLink>
-            <FaCalculator size={22} />
-            <span>Estimator</span>
+            <Link to="/estimator">
+              <FaCalculator size={22} />
+              <span>Estimator</span>
+            </Link>
           </NavLink>
           <NavLink>
-            <FaInfoCircle size={22} />
-            <span>About</span>
+            <Link to="/about">
+              <FaInfoCircle size={22} />
+              <span>About</span>
+            </Link>
           </NavLink>
         </BottomNavLinks>
       </BottomNavbarContainer>
