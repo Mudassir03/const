@@ -108,18 +108,18 @@ const Home = ({ openModal }) => {
         <ServicesTitle>Our Services</ServicesTitle>
         <ServiceGrid>
           <ServiceItem>
-            <ServiceImage src="/images/construction.jpg" alt="Construction" />
+            <ServiceImage src="https://images.pexels.com/photos/5335018/pexels-photo-5335018.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Construction" />
             <ServiceTitle>Construction</ServiceTitle>
             <ServiceDescription>We specialize in quality construction services.</ServiceDescription>
           </ServiceItem>
           <ServiceItem>
-            <ServiceImage src="/images/renovation.jpg" alt="Renovation" />
+            <ServiceImage src="https://cdn.pixabay.com/photo/2015/11/09/09/08/brush-1034901_640.jpg" alt="Renovation" />
             <ServiceTitle>Renovation</ServiceTitle>
             <ServiceDescription>Transform your space with our renovation expertise.</ServiceDescription>
           </ServiceItem>
           <ServiceItem>
-            <ServiceImage src="/images/design.jpg" alt="Design" />
-            <ServiceTitle>Design</ServiceTitle>
+            <ServiceImage src="https://media.istockphoto.com/id/123496837/photo/house-blueprints.jpg?s=612x612&w=0&k=20&c=tIGhnlgtLgRZ5r1Tzc6fuyw4Jg7aRbsHbx8BWFvFVWk=" alt="Design" />
+            <ServiceTitle>2D/3D Design</ServiceTitle>
             <ServiceDescription>Create stunning designs for your dream projects.</ServiceDescription>
           </ServiceItem>
         </ServiceGrid>
