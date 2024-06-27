@@ -42,14 +42,17 @@ const BottomNavbarContainer = styled.nav`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--primary-color);
+    background-color: #373A40;
     color: #fff;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 0.5rem 0;
+    padding: 0.2rem 0.6rem 0rem 0.6rem;
+    margin:0rem 0.5rem 1rem 0.5rem;
     z-index: 1000;
+    border-radius:10rem 10rem 10rem 10rem;
+    
   }
 `;
 
@@ -91,7 +94,7 @@ const NavLink = styled.li`
   }
 
   svg {
-    margin-bottom: 0.3rem; /* Adjust spacing between icon and text */
+    margin-bottom: 0rem; /* Adjust spacing between icon and text */
   }
 `;
 
