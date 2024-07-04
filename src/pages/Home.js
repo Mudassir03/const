@@ -3,9 +3,18 @@ import React from 'react';
 import styled from 'styled-components';
 
 const HeroSection = styled.section`
-  background-color: var(--secondary-color);
+
+  background-image: url('https://images.pexels.com/photos/358636/pexels-photo-358636.jpeg?auto=compress&cs=tinysrgb&w=600');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 4rem 0;
   text-align: center;
+  color: #fff;
+
+  @media (max-width: 768px) {
+    padding: 2rem 0;
+  }
 `;
 
 const Title = styled.h1`
@@ -100,13 +109,18 @@ const Home = ({ openModal }) => {
     <>
       <HeroSection>
         <Title>Welcome to Ek Saath co.</Title>
-        <Subtitle>lets build dream <span style={{color:"#E88D67"}}>Ek Saath</span>.</Subtitle>
+        <Subtitle style={{color:"", margin:''}}>lets build dream <span >Ek Saath</span>.</Subtitle>
         <Button onClick={openModal}>Contact Us</Button>
       </HeroSection>
 
       <ServicesSection>
         <ServicesTitle>Our Services</ServicesTitle>
         <ServiceGrid>
+        <ServiceItem>
+            <ServiceImage src="https://media.istockphoto.com/id/123496837/photo/house-blueprints.jpg?s=612x612&w=0&k=20&c=tIGhnlgtLgRZ5r1Tzc6fuyw4Jg7aRbsHbx8BWFvFVWk=" alt="Design" />
+            <ServiceTitle>2D/3D Design</ServiceTitle>
+            <ServiceDescription>Create stunning designs for your dream projects.</ServiceDescription>
+          </ServiceItem>
           <ServiceItem>
             <ServiceImage src="https://images.pexels.com/photos/5335018/pexels-photo-5335018.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Construction" />
             <ServiceTitle>Construction</ServiceTitle>
@@ -114,14 +128,10 @@ const Home = ({ openModal }) => {
           </ServiceItem>
           <ServiceItem>
             <ServiceImage src="https://cdn.pixabay.com/photo/2015/11/09/09/08/brush-1034901_640.jpg" alt="Renovation" />
-            <ServiceTitle>Renovation</ServiceTitle>
-            <ServiceDescription>Transform your space with our renovation expertise.</ServiceDescription>
+            <ServiceTitle>Interior</ServiceTitle>
+            <ServiceDescription>Transform your space with our interior expertise.</ServiceDescription>
           </ServiceItem>
-          <ServiceItem>
-            <ServiceImage src="https://media.istockphoto.com/id/123496837/photo/house-blueprints.jpg?s=612x612&w=0&k=20&c=tIGhnlgtLgRZ5r1Tzc6fuyw4Jg7aRbsHbx8BWFvFVWk=" alt="Design" />
-            <ServiceTitle>2D/3D Design</ServiceTitle>
-            <ServiceDescription>Create stunning designs for your dream projects.</ServiceDescription>
-          </ServiceItem>
+          
         </ServiceGrid>
       </ServicesSection>
     </>
